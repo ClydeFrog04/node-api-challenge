@@ -39,14 +39,20 @@ Commit your code regularly and use descriptive messages. This helps both you (in
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your Team Lead.
 
 -   [ ] Mention two parts of Express that you learned about this week.
+We learned about middleware which can be used to keep our app dry, as well as server side routing which can be used for some of the same reasons.
 
 -   [ ] Describe Middleware?
+Middleware is a way of writing reusable pieces of code to keep our code clean and dry. An example would be a function that validates some request before handling the request.
 
 -   [ ] Describe a Resource?
+A resource is data sent to and from the client that gives our app purpose. An example of a resource might be a list of products in a store's database.
 
 -   [ ] What can the API return to help clients know if a request was successful?
+An api can return a 200 status code as well as some kind of success message.
 
 -   [ ] How can we partition our application into sub-applications?
+With routers we can break things down by category such as users, comments, posts etc. so we can have different "servers" for each one to keep our app clean.
+
 
 ## Minimum Viable Product
 
