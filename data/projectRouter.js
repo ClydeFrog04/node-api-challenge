@@ -34,6 +34,16 @@ router.get("/:id", validateProjectId, async (req, res) => {
     }
 });
 
+router.get("/:id/actions", validateProjectId, async (req, res) => {
+    const actions = await db.getProjectActions(req.params.id);
+    try {
+        res.status(200).json(actions);
+    } catch (e) {
+        console.log(e.stack);
+        res.status(500).json({message: "error retrieving actions"});
+    }
+});
+
 router.put("/:id", validateProjectId, validateProject, async (req, res) => {//did not return updated project
     const updatedProject = await db.update(req.params.id, req.body);
     try{
