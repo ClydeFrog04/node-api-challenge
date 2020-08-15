@@ -4,6 +4,8 @@ const {validateProjectId, validateProject} = require("./middleware/project");
 
 const router = express.Router();
 
+
+//create
 router.post("/", validateProject, async (req, res) => {
     const newProject = await db.insert(req.body);
     try {
@@ -14,6 +16,8 @@ router.post("/", validateProject, async (req, res) => {
     }
 });
 
+
+//read
 router.get("/", async (req, res) => {
     const projects = await db.get();
     try {
@@ -44,6 +48,8 @@ router.get("/:id/actions", validateProjectId, async (req, res) => {
     }
 });
 
+
+//update
 router.put("/:id", validateProjectId, validateProject, async (req, res) => {//did not return updated project
     const updatedProject = await db.update(req.params.id, req.body);
     try{
@@ -54,6 +60,8 @@ router.put("/:id", validateProjectId, validateProject, async (req, res) => {//di
     }
 });
 
+
+//delete
 router.delete("/:id",validateProjectId, async (req, res) => {
     const deletedItem = await db.get(req.params.id);
     await db.remove(req.params.id);

@@ -5,6 +5,7 @@ const {validateActionId, validateAction} = require("./middleware/action");
 const router = express.Router();
 
 
+//create
 router.post("/", validateAction, async (req, res) => {
     const newAction = await db.insert(req.body);
     try {
@@ -15,6 +16,7 @@ router.post("/", validateAction, async (req, res) => {
     }
 });
 
+//read
 router.get("/", async (req, res) => {
     const actions = await db.get();
     try {
@@ -35,6 +37,7 @@ router.get("/:id", validateActionId, async (req, res) => {
     }
 });
 
+//update
 router.put("/:id", validateActionId, validateAction, async (req, res) => {
     const updatedAction = await db.update(req.params.id, req.body);
     try {
@@ -45,6 +48,7 @@ router.put("/:id", validateActionId, validateAction, async (req, res) => {
     }
 });
 
+//delete
 router.delete("/:id",validateActionId, async (req, res) => {
     const deletedItem = await db.get(req.params.id);
     await db.remove(req.params.id);
