@@ -34,10 +34,10 @@ router.get("/:id", validateProjectId, async (req, res) => {
     }
 });
 
-router.put("/:id", validateProjectId, validateProject, async (req, res) => {
+router.put("/:id", validateProjectId, validateProject, async (req, res) => {//did not return updated project
     const updatedProject = await db.update(req.params.id, req.body);
     try{
-        res.status(204).json(updatedProject);
+        res.status(200).json(updatedProject);
     }catch (e) {
         console.log(e.stack);
         res.status(500).json({message: "Error updating project"});

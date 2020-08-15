@@ -38,7 +38,7 @@ router.get("/:id", validateActionId, async (req, res) => {
 router.put("/:id", validateActionId, validateAction, async (req, res) => {
     const updatedAction = await db.update(req.params.id, req.body);
     try {
-        res.status(204).json(updatedAction);
+        res.status(200).json(updatedAction);
     } catch (e) {
         console.log(e.stack);
         res.status(500).json({message: "Error updating action"});
